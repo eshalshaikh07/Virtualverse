@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.min.js"></script>
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-marker preset="hiro">
+        <!-- Use GLB model with proper scale, position, and visibility -->
+        <a-entity
+          gltf-model="url(assets/model.glb)"
+          position="0 1.5 2"
+          scale="0.3 0.3 0.3"
+          visible="true"
+        >
+          <!-- Continuous rotation animation -->
+          <a-animation
+            attribute="rotation"
+            dur="3000"
+            to="360 360 0"
+            repeat="indefinite"
+            easing="linear"
+          >
+          </a-animation>
+        </a-entity>
+      </a-marker>
+
+      <!-- Camera entity -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
